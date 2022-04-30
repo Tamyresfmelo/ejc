@@ -38,7 +38,15 @@ public class Operacoes {
     	Map<String, List<Encontrista>> grupoTransporte = new HashMap<String, List<Encontrista>>();
     	
     	
-    	
+    	for (int i = 0; i < voluntarioList.size(); i++) {
+    		VoluntarioEjc voluntario = voluntarioList.get(i);
+    		
+    		if (voluntario.isTemCarro() && voluntario.isCasado() && voluntario.isFezEcc()) {
+    			grupoTransporte.put(voluntario.getNome(), new ArrayList());
+    			
+    		}
+    		
+    	}
     	
     	
     	
