@@ -1,5 +1,7 @@
 package ejc.acoes;
 
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,18 +14,22 @@ public class Operacoes {
 	
 	public static Map<String,List<Encontrista>> separarGrupo(List<Encontrista> encontristaList){
 		
-		Map<String,List<Encontrista>> grupos = new HashMap<String, List<Encontrista>>();
+		Map<String,List<Encontrista>> grupo = new HashMap<String, List<Encontrista>>();
 		
-		for (Encontrista encontrista : encontristaList) {
-			if(grupos.containsKey(encontrista.getEndereco().getBairro())){
-				grupos.get(encontrista.getEndereco().getBairro()).add(encontrista);
+		for (int i = 0; i < encontristaList.size() ; i++) {
+			Encontrista encontrista = encontristaList.get(i);
+			
+			String bairroEncontrista = encontrista.getEndereco().getBairro();
+			
+			if(grupo.containsKey(bairroEncontrista)){
+				grupo.get(bairroEncontrista).add(encontrista);
 			}else {
-				grupos.put(encontrista.getEndereco().getBairro(), new ArrayList<Encontrista>());
-				grupos.get(encontrista.getEndereco().getBairro()).add(encontrista);
+				grupo.put(bairroEncontrista, new ArrayList<Encontrista>());
+				grupo.get(bairroEncontrista).add(encontrista);
 			}
 			
 		}
-		return grupos;
+		return grupo;
 	}
 
 }
