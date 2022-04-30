@@ -19,7 +19,6 @@ public class Operacoes {
 		
 		for (int i = 0; i < encontristaList.size() ; i++) {
 			Encontrista encontrista = encontristaList.get(i);
-			
 			String bairroEncontrista = encontrista.getEndereco().getBairro();
 			
 			if(grupo.containsKey(bairroEncontrista)){
