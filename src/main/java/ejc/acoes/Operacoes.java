@@ -33,7 +33,7 @@ public class Operacoes {
 		return grupo;
 	}
 
-    public static Map<String,List<Encontrista>> dividirTransporte(List<Encontrista> encontristaList, List<VoluntarioEjc> voluntarioList){
+    public static Map<String,List<Encontrista>> dividirTransporte(Map<String, List<Encontrista>> encontristaMap , List<VoluntarioEjc> voluntarioList){
 		
     	Map<String, List<Encontrista>> grupoTransporte = new HashMap<String, List<Encontrista>>();
     	
@@ -45,6 +45,12 @@ public class Operacoes {
     			grupoTransporte.put(voluntario.getNome(), new ArrayList());
     			
     		}
+
+  
+    	}
+    	
+    	for (int i = 0; i < grupoTransporte.keySet().size(); i++) {
+    		
     		
     	}
     	
