@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import ejc.entidades.Encontrista;
+import ejc.entidades.VoluntarioEjc;
 
 public class Operacoes {
 	
@@ -32,4 +33,20 @@ public class Operacoes {
 		return grupo;
 	}
 
+    public static Map<String,List<Encontrista>> dividirTransporte(List<Encontrista> encontristaList, List<VoluntarioEjc> voluntarioList){
+		
+    	Map<String, List<Encontrista>> grupoTransporte = new HashMap<String, List<Encontrista>>();
+    	
+    	
+    	
+    	
+    	
+    	
+    	return null;
+    	
+    }	
+	
+	
+	
 }
+
