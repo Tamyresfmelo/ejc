@@ -1,4 +1,4 @@
-package ejc.acoes;
+package ejc.entidades;
 
 public class VoluntarioEjc {
 
