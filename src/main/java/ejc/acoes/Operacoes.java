@@ -53,6 +53,8 @@ public class Operacoes {
 					if (!encontristaMap.get(nomeBairro).isEmpty()) {
 						Encontrista encontrista = encontristaMap.get(nomeBairro).remove(0);
 						grupoTransporte.get(nomeVoluntario).add(encontrista);
+					}else {
+						break;
 					}
 				}
 
