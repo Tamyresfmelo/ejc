@@ -18,7 +18,7 @@ import com.google.firebase.cloud.FirestoreClient;
 public class Teste {
 	
 	public Teste() throws IOException, InterruptedException, ExecutionException {
-		InputStream is = Main.class.getClassLoader().getResourceAsStream("credencial.json");
+		InputStream is = Principal.class.getClassLoader().getResourceAsStream("credencial.json");
 		GoogleCredentials credentials = GoogleCredentials.fromStream(is);
 		FirebaseOptions options = new FirebaseOptions.Builder()
 			    .setCredentials(credentials)
