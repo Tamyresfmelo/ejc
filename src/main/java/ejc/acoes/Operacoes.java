@@ -3,7 +3,9 @@ package ejc.acoes;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -45,19 +47,31 @@ public class Operacoes {
     			
     		}
 
-  
     	}
     	
-    	for (int i = 0; i < grupoTransporte.keySet().size(); i++) {
-    		
-    		
+    	for(String nomeVoluntario : grupoTransporte.keySet()) {
+    		for(String nomeBairro : encontristaMap.keySet()) {
+    			while(grupoTransporte.get(nomeVoluntario).size() <3 && temEncontristaSemCarro(encontristaMap.values())) {
+    				Encontrista encontrista = encontristaMap.get(nomeBairro).remove(0);
+    				grupoTransporte.get(nomeVoluntario).add(encontrista);
+    			}
+        		
+        	}
     	}
     	
+    	return grupoTransporte;
     	
-    	
-    	return null;
-    	
-    }	
+    }
+
+	private static boolean temEncontristaSemCarro(Collection<List<Encontrista>> values) {
+		
+		for (List<Encontrista> list : values) {
+			if (!list.isEmpty()) {
+				return true;
+			}
+		}
+		return false;
+	}	
 	
 	
 	
