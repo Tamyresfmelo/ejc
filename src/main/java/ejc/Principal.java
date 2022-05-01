@@ -4,20 +4,21 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import ejc.acoes.EncontristaRepositorio;
+import ejc.acoes.Operacoes;
 import ejc.acoes.VoluntarioEjcRepositorio;
 import ejc.entidades.Encontrista;
 import ejc.entidades.Endereco;
-import ejc.entidades.Pessoa;
 import ejc.entidades.VoluntarioEjc;
 
 public class Principal {
 
 	public static void main(String[] args) throws ParseException {
 		System.out.println("Bem-vindo(a) ao sistema do EJC");
-        Scanner teclado = new Scanner (System.in);
+		Scanner teclado = new Scanner(System.in);
 		int operacao = 0;
 		do {
 			System.out.println("Escolha uma operera��o a ser realizada");
@@ -36,21 +37,30 @@ public class Principal {
 				break;
 
 			case 1:
-                 System.out.println("### Cadastro Encontrista ###");
-                 cadastrarEncontrista();
+				System.out.println("### Cadastro Encontrista ###");
+				cadastrarEncontrista();
 				break;
 
 			case 2:
 				System.out.println("### Cadastro Voluntário ###");
-                cadastrarVoluntario();
+				cadastrarVoluntario();
 				break;
 
 			case 3:
-
+				Map<String, List<Encontrista>> grupoBairro;
+				System.out.println("### Gerar Grupo ###");
+				grupoBairro = Operacoes.separarGrupo(EncontristaRepositorio.listar());
+				imprimirGrupo(grupoBairro);
 				break;
 
 			case 4:
-
+				Map<String, List<Encontrista>> grupoTransporte;
+				Map<String, List<Encontrista>> grupoB;
+				grupoB = Operacoes.separarGrupo(EncontristaRepositorio.listar());
+				System.out.println("### Separar Transporte ###");
+				grupoTransporte = Operacoes.dividirTransporte(grupoB,VoluntarioEjcRepositorio.listar());
+				imprimirGrupo(grupoTransporte);
+				
 				break;
 			case 5:
 				System.out.println("### Listar Encontrista ###");
@@ -63,6 +73,17 @@ public class Principal {
 			}
 
 		} while (operacao != 0);
+
+	}
+
+	private static void imprimirGrupo(Map<String, List<Encontrista>> grupoBairro) {
+		for (String nomeBairro : grupoBairro.keySet()) {
+			System.out.println(nomeBairro);
+			for (Encontrista encontrista : grupoBairro.get(nomeBairro)) {
+				System.out.println("Nome: " + encontrista.getNome() + "bairro: " + encontrista.getEndereco().getBairro());
+				
+			}
+		}
 
 	}
 
@@ -124,18 +145,19 @@ public class Principal {
 		EncontristaRepositorio.salvar(encontrista);
 
 	}
+
 	private static void listarEncontrista() {
-		for(Encontrista encontrista: EncontristaRepositorio.listar()) {
-			System.out.println("Nome: "+ encontrista.getNome() + "  -   Telefone: "+ encontrista.getTelefone());
-		}
-	}
-	private static void listarVoluntario() {
-		for(VoluntarioEjc voluntario: VoluntarioEjcRepositorio.listar()) {
-			System.out.println("Nome:"+ voluntario.getNome() + "Telefone:"+ voluntario.getTelefone());
+		for (Encontrista encontrista : EncontristaRepositorio.listar()) {
+			System.out.println("Nome: " + encontrista.getNome() + "  -   Telefone: " + encontrista.getTelefone());
 		}
 	}
 
-	 
+	private static void listarVoluntario() {
+		for (VoluntarioEjc voluntario : VoluntarioEjcRepositorio.listar()) {
+			System.out.println("Nome:" + voluntario.getNome() + "Telefone:" + voluntario.getTelefone());
+		}
+	}
+
 	public static void cadastrarVoluntario() throws ParseException {
 		Scanner teclado = new Scanner(System.in);
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
