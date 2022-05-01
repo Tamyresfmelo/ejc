@@ -3,12 +3,14 @@ package ejc;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import ejc.acoes.EncontristaRepositorio;
 import ejc.acoes.VoluntarioEjcRepositorio;
 import ejc.entidades.Encontrista;
 import ejc.entidades.Endereco;
+import ejc.entidades.Pessoa;
 import ejc.entidades.VoluntarioEjc;
 
 public class Principal {
@@ -24,6 +26,8 @@ public class Principal {
 			System.out.println("2 - Cadastrar Volunt�rio");
 			System.out.println("3 - Gerar grupo");
 			System.out.println("4 - Separar transporte");
+			System.out.println("5 - Listar Encontrista");
+			System.out.println("6 - Listar Voluntario");
 			operacao = teclado.nextInt();
 
 			switch (operacao) {
@@ -32,12 +36,12 @@ public class Principal {
 				break;
 
 			case 1:
-                 System.out.println("Cadastro Encontrista");
+                 System.out.println("### Cadastro Encontrista ###");
                  cadastrarEncontrista();
 				break;
 
 			case 2:
-				System.out.println("Cadastro Voluntário");
+				System.out.println("### Cadastro Voluntário ###");
                 cadastrarVoluntario();
 				break;
 
@@ -47,6 +51,14 @@ public class Principal {
 
 			case 4:
 
+				break;
+			case 5:
+				System.out.println("### Listar Encontrista ###");
+				listarEncontrista();
+				break;
+			case 6:
+				System.out.println("### Listar Voluntário ###");
+				listarVoluntario();
 				break;
 			}
 
@@ -112,7 +124,18 @@ public class Principal {
 		EncontristaRepositorio.salvar(encontrista);
 
 	}
+	private static void listarEncontrista() {
+		for(Encontrista encontrista: EncontristaRepositorio.listar()) {
+			System.out.println("Nome: "+ encontrista.getNome() + "  -   Telefone: "+ encontrista.getTelefone());
+		}
+	}
+	private static void listarVoluntario() {
+		for(VoluntarioEjc voluntario: VoluntarioEjcRepositorio.listar()) {
+			System.out.println("Nome:"+ voluntario.getNome() + "Telefone:"+ voluntario.getTelefone());
+		}
+	}
 
+	 
 	public static void cadastrarVoluntario() throws ParseException {
 		Scanner teclado = new Scanner(System.in);
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
