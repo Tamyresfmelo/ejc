@@ -33,7 +33,7 @@ public class Principal {
 
 			switch (operacao) {
 			case 0:
-				System.out.println("AtÃ© mais!");
+				System.out.println("Até mais!");
 				break;
 
 			case 1:
@@ -80,7 +80,7 @@ public class Principal {
 		for (String nomeBairro : grupoBairro.keySet()) {
 			System.out.println(nomeBairro);
 			for (Encontrista encontrista : grupoBairro.get(nomeBairro)) {
-				System.out.println("Nome: " + encontrista.getNome() + "bairro: " + encontrista.getEndereco().getBairro());
+				System.out.println("Nome: " + encontrista.getNome() + " Bairro: " + encontrista.getEndereco().getBairro());
 				
 			}
 		}
