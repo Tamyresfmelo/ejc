@@ -2,10 +2,10 @@ package ejc.cep;
 
 public class EnderecoCep {
 
-	String cep;
-	String logradouro;
-	String bairro;
-	String localidade;
+	public String cep;
+	public String logradouro;
+	public String bairro;
+	public String localidade;
 	
 		
 }
