@@ -1,6 +1,6 @@
 ### Introdução
 
-Projeto desenvolvido em JAVA para backend de uma aplicação web que irá realizar cadastro de pessoas, puxar o endereço pelo CEP e separar grupos de pessoas de acordos com os paramêtros estabelecidos (Por bairro, por transporte, por cores) .
+Projeto desenvolvido em JAVA para backend de uma aplicação web que irá realizar cadastro de pessoas, puxar o endereço pelo CEP e separar grupos de pessoas de acordos com os parâmetros estabelecidos (Por bairro, por transporte, por cores) .
 
 
 ### Resumo do Projeto
