@@ -6,7 +6,7 @@ Projeto desenvolvido em JAVA para backend de uma aplicação web que irá realiz
 ### Resumo do Projeto
 É uma aplicação web para um grupo de jovens de uma igreja, onde é necessário realizar o cadastro de jovens que queiram participar do EJC (Encontro de Jovens com Cristo) e também rezalizar o cadastro de voluntários que queiram trabalhar no dia do evento.
 
-- Quem são os principais usuários?
+- Quem são os principais usuários? <br>
 São os organizadores do evento, os jovens que gostariam de participar e os voluntários que gostariam de traballhar no evento.
 
 
